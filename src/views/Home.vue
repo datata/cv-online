@@ -1,17 +1,13 @@
 <template>
-  <div class="home">
-    <div id="nav">
-      <router-link to="/cv-online">Create your cv-online</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <router-link to="/cv-online"><el-button type="success">Create your cv-online</el-button></router-link>
+    <router-view />
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  components: {
-  }
-}
+  name: "Home",
+  components: {},
+};
 </script>
