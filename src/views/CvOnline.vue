@@ -21,21 +21,36 @@
         <el-button type="primary" @click="onSubmit">Create</el-button>
       </el-form-item>
     </el-form>
+    <CvModelPaola :print="this.print" :cv="this.form" />
   </div>
 </template>
 
 <script>
+import CvModelPaola from '@/components/CvModelPaola.vue';
+
 export default {
+  components:{
+    CvModelPaola,
+  },
   data() {
     return {
+      print: false,
       form: {
         name: "",
+        profession: "",
+        email: "",
+        phone: "",
       },
     };
   },
   methods: {
     onSubmit() {
       console.log("submit!");
+      this.print = true;
+
+      setTimeout(() => {
+        this.print = false;
+      }, 100);
     },
   },
 };
