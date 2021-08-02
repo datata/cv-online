@@ -42,7 +42,7 @@
           v-model="experience.description"
         >
         </el-input>
-        <el-button @click.prevent="removeExperience(experience)"
+        <el-button @click.prevent="removeExperience(experience)" :disabled="isExperienceDisabled"
           >Delete</el-button
         >
         <el-button @click="addLaboralExperience">New experience</el-button>
@@ -59,10 +59,21 @@
           :placeholder="'School, academy or university'"
           v-model="education.corporate"
         ></el-input>
-        <el-button @click.prevent="removeEducation(education)"
+        <el-button @click.prevent="removeEducation(education)" :disabled="isEducationButtonDisabled"
           >Delete</el-button
         >
         <el-button @click="addEducation">New education</el-button>
+      </el-form-item>
+
+      <el-form-item
+        v-for="skill in form.skills"
+        :label="'Skills'"
+        :key="skill.key"
+      >
+        <el-input :placeholder="'Name'" v-model="skill.name"></el-input>
+
+        <el-button @click.prevent="removeSkill(skill)" :disabled="isSkillButtonDisabled">Delete</el-button>
+        <el-button @click="addSkill">New skill</el-button>
       </el-form-item>
 
       <el-form-item>
@@ -106,6 +117,12 @@ export default {
             place: "",
           },
         ],
+        skills: [
+          {
+            key: 3,
+            name: "",
+          },
+        ],
       },
     };
   },
@@ -129,7 +146,7 @@ export default {
     },
     removeExperience(item) {
       var index = this.form.experiences.indexOf(item);
-      if (index !== -1) {
+      if (index !== -1 && this.form.experiences.length > 1) {
         this.form.experiences.splice(index, 1);
       }
     },
@@ -143,10 +160,43 @@ export default {
     },
     removeEducation(item) {
       var index = this.form.educations.indexOf(item);
-      if (index !== -1) {
+      if (index !== -1 && this.form.educations.length > 1) {
         this.form.educations.splice(index, 1);
       }
     },
+    addSkill() {
+      this.form.skills.push({
+        key: Date.now(),
+        name: ''
+      });
+    },
+    removeSkill(item) {
+      var index = this.form.skills.indexOf(item);
+      if (index !== -1 && this.form.skills.length > 1) {
+        this.form.skills.splice(index, 1);
+      }
+    },
   },
+  computed: {
+    isExperienceDisabled() {
+      if(this.form.experiences.length <= 1) 
+         return true;
+
+      return false;
+    },
+    isEducationButtonDisabled() {
+      if(this.form.educations.length <= 1) 
+         return true;
+
+      return false;
+    },
+    isSkillButtonDisabled() {
+      if(this.form.skills.length <= 1) 
+         return true;
+
+      return false;
+    }
+  }
+  
 };
 </script>
