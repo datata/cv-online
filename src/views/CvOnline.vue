@@ -42,7 +42,7 @@
           v-model="experience.description"
         >
         </el-input>
-        <el-button @click.prevent="removeExperience(experience)" :disabled="isExperienceDisabled"
+        <el-button @click.prevent="removeExperience(experience)" :disabled="isExperienceDeleteButtonDisabled"
           >Delete</el-button
         >
         <el-button @click="addLaboralExperience">New experience</el-button>
@@ -59,7 +59,7 @@
           :placeholder="'School, academy or university'"
           v-model="education.corporate"
         ></el-input>
-        <el-button @click.prevent="removeEducation(education)" :disabled="isEducationButtonDisabled"
+        <el-button @click.prevent="removeEducation(education)" :disabled="isEducationDeleteButtonDisabled"
           >Delete</el-button
         >
         <el-button @click="addEducation">New education</el-button>
@@ -72,7 +72,7 @@
       >
         <el-input :placeholder="'Name'" v-model="skill.name"></el-input>
 
-        <el-button @click.prevent="removeSkill(skill)" :disabled="isSkillButtonDisabled">Delete</el-button>
+        <el-button @click.prevent="removeSkill(skill)" :disabled="isSkillDeleteButtonDisabled">Delete</el-button>
         <el-button @click="addSkill">New skill</el-button>
       </el-form-item>
 
@@ -178,25 +178,27 @@ export default {
     },
   },
   computed: {
-    isExperienceDisabled() {
+    isExperienceDeleteButtonDisabled() {
+      let isExperienceDeleteButtonDisabled = false;
       if(this.form.experiences.length <= 1) 
-         return true;
+         isExperienceDeleteButtonDisabled = true;
 
-      return false;
+      return isExperienceDeleteButtonDisabled;
     },
-    isEducationButtonDisabled() {
+    isEducationDeleteButtonDisabled() {
+      let isEducationDeleteButtonDisabled = false;
       if(this.form.educations.length <= 1) 
-         return true;
+         isEducationDeleteButtonDisabled = true;
 
-      return false;
+      return isEducationDeleteButtonDisabled;
     },
-    isSkillButtonDisabled() {
+    isSkillDeleteButtonDisabled() {
+      let isSkillDeleteButtonDisabled = false;
       if(this.form.skills.length <= 1) 
-         return true;
+         isSkillDeleteButtonDisabled = true;
 
-      return false;
+      return isSkillDeleteButtonDisabled;
     }
-  }
-  
+  }  
 };
 </script>
