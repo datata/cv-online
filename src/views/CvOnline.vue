@@ -45,10 +45,26 @@
         <el-button @click.prevent="removeExperience(experience)"
           >Delete</el-button
         >
-      </el-form-item>
-      <el-form-item>
         <el-button @click="addLaboralExperience">New experience</el-button>
       </el-form-item>
+
+      <el-form-item
+        v-for="education in form.educations"
+        :label="'Education'"
+        :key="education.key"
+      >
+        <el-input :placeholder="'Dates'" v-model="education.dates"></el-input>
+        <el-input :placeholder="'Title'" v-model="education.title"></el-input>
+        <el-input
+          :placeholder="'School, academy or university'"
+          v-model="education.corporate"
+        ></el-input>
+        <el-button @click.prevent="removeEducation(education)"
+          >Delete</el-button
+        >
+        <el-button @click="addEducation">New education</el-button>
+      </el-form-item>
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Create</el-button>
       </el-form-item>
@@ -82,6 +98,14 @@ export default {
             job: "",
           },
         ],
+        educations: [
+          {
+            key: 2,
+            dates: "",
+            title: "",
+            place: "",
+          },
+        ],
       },
     };
   },
@@ -97,13 +121,30 @@ export default {
     addLaboralExperience() {
       this.form.experiences.push({
         key: Date.now(),
-        value: "",
+        corporate: "",
+        dates: "",
+        description: "",
+        job: "",
       });
     },
     removeExperience(item) {
       var index = this.form.experiences.indexOf(item);
       if (index !== -1) {
         this.form.experiences.splice(index, 1);
+      }
+    },
+    addEducation() {
+      this.form.educations.push({
+        key: Date.now(),
+        dates: "",
+        title: "",
+        place: "",
+      });
+    },
+    removeEducation(item) {
+      var index = this.form.educations.indexOf(item);
+      if (index !== -1) {
+        this.form.educations.splice(index, 1);
       }
     },
   },
