@@ -1,0 +1,47 @@
+{
+    "buttons":{
+        "downloadPDF": "Download PDF"
+    },
+    "personalData": {
+        "name": "Your name",
+        "profession": "Your profession",
+        "email": "Your email",
+        "phone": "Your phone",
+        "linkedin": "Your LinkedIn"
+    },
+    "experience":{
+        "experience": "Experience",
+        "inputs":{
+            "dates": "Dates MM/YY - MM/YY",
+            "job": "Job",
+            "corporate": "Corporate",
+            "description": "Description"
+        },
+        "buttons": {
+            "addExperience": "Añadir experience",
+            "deleteExperience": "Eliminar experience"
+        }
+    },
+    "skill":{
+        "skill": "Skill",
+        "inputs":{
+            "skill": "Skill name"
+        },
+        "buttons": {
+            "addSkill": "Add skill",
+            "deleteSkill": "Delete skill"
+        }
+    },
+    "education":{
+        "education": "Education",
+        "inputs":{
+            "dates": "Dates MM/YY - MM/YY",
+            "academicTitles": "Academic title",
+            "academicPlaces": "School, academy or University"
+        },
+        "buttons": {
+            "addEducation": "Add educations",
+            "deleteEducation": "Delete educations"
+        }
+    }
+}

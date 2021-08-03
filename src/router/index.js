@@ -13,7 +13,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/cv-online',
+    path: '/cv-online/:country?',
     name: 'CvOnline',
     component: CvOnline
   }
